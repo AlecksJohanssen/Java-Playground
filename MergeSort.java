@@ -16,6 +16,7 @@ class MergeSort {
     if ( low < high ) {
       int middle = low + ( high - low ) / 2;
       System.out.println(low);
+      System.out.println(high);
       mergesort(low, middle);
       mergesort(middle + 1, high);
       merge(low, middle, high);
@@ -25,6 +26,7 @@ class MergeSort {
     for (int i = low; i <= high; i++ ) {
       helper[i] = numbers[i];
     }
+    System.out.print(Arrays.toString(helper));
     int i = low;
     int j = middle + 1;
     int k = low;
