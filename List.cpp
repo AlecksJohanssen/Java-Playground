@@ -14,7 +14,6 @@ class List {
     head = NULL;
   }
   ~List() {
-    printf("%d current data", head -> data);
     while(head != NULL) {
       Node * n = head -> next;
       delete head;
