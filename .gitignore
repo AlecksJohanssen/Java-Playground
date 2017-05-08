@@ -35,7 +35,7 @@
 *.out
 *.app
 *.exec
-
+*.main
 ### Java ###
 # Compiled class file
 *.class
