@@ -13,25 +13,11 @@ class List {
   List() {
     head = NULL;
   }
-  ~List() {
-    printf("%d current data", head -> data);
-    while(head != NULL) {
-      Node * n = head -> next;
-      delete head;
-      head = n;
-      if( head == NULL ) {
-        printf("Head Null");
-      } else {
-        printf("%d \n", head-> data);
-      }
-    }
-  }
   void add(int value) {
     Node * n = new Node;
     n -> data = value;
     n -> next = head;
     head = n;
-    printf("Add First");
   }
 
   int size() {
@@ -43,16 +29,39 @@ class List {
     }
     return count;
   }
-  
-  void Print(Node* head)
-  {
-    while (head != NULL)
+
+  void Print() {
+    Node * node = head;
+    while (node != NULL)
     {
-      cout << head->data << endl;
-      head = head->next;
+      cout << node->data << endl;
+      node = node ->next;
     }
     cout << "NULL";
   }
+
+  void deleteNode(int params) {
+    Node * currentNode = head;
+    Node * prevNode;
+    if (currentNode -> data == params && currentNode != NULL) {
+      printf("Found");
+      head = currentNode -> next;
+      free(currentNode);
+      return;
+    }
+    while (currentNode -> data != params && currentNode != NULL) {
+      prevNode = currentNode;
+      printf("%d", prevNode -> data);
+      currentNode = currentNode -> next;
+    }
+    if (currentNode == NULL) {
+      printf("trigger");  
+      return;
+    } else {
+      prevNode -> next = currentNode -> next;
+      free(currentNode);
+    }
+  } 
 };
 
 int main() {
@@ -62,5 +71,7 @@ int main() {
   a.add(12);
   a.add(100);
   a.add(1999);
+  a.deleteNode(2000);
+  a.Print();
   return 0;
 }
